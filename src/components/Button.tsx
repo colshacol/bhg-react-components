@@ -1,7 +1,18 @@
 import * as React from "react"
-import { StyledProps, styled, css } from "../styles/stitches"
+import { styled, css } from "../styles/stitches"
 
-export const Button = styled("button", {
+type JA = JSX.IntrinsicAttributes
+type CommonProps = React.ComponentProps<ReturnType<ReturnType<typeof styled>>> &  JSX.IntrinsicAttributes
+
+export interface ButtonPropsT extends React.ComponentPropsWithRef<CommonProps> {
+  intent: "primary" | "secondary" | "warning"
+  isRipple: boolean
+  className: string
+  children: any
+}
+
+export const Button: React.FC<ButtonPropsT> = styled("button", {
+  showFriendlyClassnames: true,
   fontFamily: "var(--main-font)",
   appearance: "none",
   color: "var(--color-white)",
@@ -34,10 +45,6 @@ export const Button = styled("button", {
       }
     },
 
-    isDisabled: {
-      true: {}
-    },
-
     variant: {
       primary: {
         backgroundColor: "var(--color-green)"
@@ -53,3 +60,7 @@ export const Button = styled("button", {
     }
   }
 })
+
+Button.defaultProps = {
+  children: () => "HOWDY"
+}

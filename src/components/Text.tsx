@@ -1,35 +1,46 @@
 import * as React from "react"
-import { StyledProps, styled, css } from "../styles/stitches"
+import { styled, css } from "../styles/stitches"
 
-type PropsT = StyledProps & {}
+export type ParagraphPropsT = { yolo?: boolean }
+export type H1PropsT = { yolo?: boolean }
+export type H2PropsT = { yolo?: boolean }
 
-export const Paragraph: React.FC<PropsT> = styled("p", {
+export const Paragraph = styled("p", {
   color: "var(--color-black)",
   fontSize: "1.6rem",
   letterSpacing: 0.5
 })
 
-export const H1: React.FC<PropsT> = styled("h1", {
+export const H1 = styled("h1", {
   color: "var(--color-black)",
   fontSize: "$6"
 })
 
-export const H2: React.FC<PropsT> = styled("h1", {
+export const H2 = styled("h1", {
   color: "var(--color-black)",
   fontSize: "$5"
 })
 
-export const H3: React.FC<PropsT> = styled("h1", {
+export const H3 = styled("h1", {
   color: "var(--color-black)",
   fontSize: "$4"
 })
 
-export const H4: React.FC<PropsT> = styled("h1", {
+export const H4 = styled("h1", {
   color: "var(--color-black)",
   fontSize: "$3"
 })
 
-export const H5: React.FC<PropsT> = styled("h1", {
+export const H5 = styled("h1", {
   color: "var(--color-black)",
   fontSize: "$2"
 })
+
+export default {
+  Paragraph,
+  H1,
+  H2,
+  H3,
+  H4,
+  H5
+}

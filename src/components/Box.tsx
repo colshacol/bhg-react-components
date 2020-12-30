@@ -1,14 +1,14 @@
 import * as React from "react"
-import { StyledProps, styled, css } from "../styles/stitches"
+import { styled, css } from "../styles/stitches"
 
 // ** NOTE: This kind of component is not the
-// target market for styled systems like Stitckes.
+// target market for styled systems like Stitches.
 // It can be done using a shit ton of compoundVariants,
 // and it is even a more elegant solution than what
 // is seen in this file, but, again, not Stitches'
 // domain.
 
-type PropsT = {
+type BoxPropsT = {
   direction?: string
   isReverse?: boolean
   isInline?: boolean
@@ -18,8 +18,6 @@ type PropsT = {
   className?: string
   children?: any
 }
-
-const Wrapper = styled("div", {})
 
 // NOTE: justify-content and align-items accept
 // similar but varied values.
@@ -45,13 +43,13 @@ const JUSTIFY_CONTENT_VALUE_MAP = new Map([
 // ** NOTE: Referential transparency / destructuring.
 // ** NOTE: Arrow parens. (Why not? Don't be lazy.)
 
-const getBoxStyle = (props: PropsT) => {
+const getBoxStyle = (props: BoxPropsT) => {
   const isRow = props.direction === "row"
   const reverseText = props.isReverse ? "-reverse" : ""
 
   const [xArrangementPropName, yArrangementPropName] = isRow
-    ? ["justify-content", "align-items"]
-    : ["align-items", "justify-content"]
+    ? ["justifyContent", "alignItems"]
+    : ["alignItems", "justifyContent"]
 
   const [xArrangementValueMap, yArrangementValueMap] = isRow
     ? [JUSTIFY_CONTENT_VALUE_MAP, ALIGN_ITEMS_VALUE_MAP]
@@ -72,10 +70,9 @@ const getBoxStyle = (props: PropsT) => {
   return style
 }
 
-export const Box: React.FC<PropsT> = (props) => {
-  const style = getBoxStyle(props)
-
-  return <Wrapper {...props} style={style} />
+export const Box: React.FC<BoxPropsT> = (props: BoxPropsT) => {
+  const style = getBoxStyle(props) as React.CSSProperties
+  return <div style={style} {...props} />
 }
 
 Box.defaultProps = {

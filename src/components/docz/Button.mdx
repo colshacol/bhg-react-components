@@ -1,0 +1,32 @@
+---
+name: Button
+route: /Button
+menu: Components
+---
+
+import { Playground, Props } from "docz"
+
+import { Button, ppp } from "../Button"
+import { Spacer } from "../Spacer"
+import { TypedComponents, Button as Btn } from "./"
+
+# Button
+
+Howdy
+
+<!--  -->
+
+<br />
+<Props of={TypedComponents.Button} />
+
+Partner
+
+<!-- Must be something here to separate Docz components. -->
+
+<Playground>
+  <Button>Click me</Button>
+  <Spacer />
+  <Button intent="primary">Click me</Button>
+  <Spacer />
+  <Button intent="warning">Click me</Button>
+</Playground>
